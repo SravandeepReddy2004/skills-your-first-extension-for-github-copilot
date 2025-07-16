@@ -62,26 +62,28 @@ jobs:
 
       - name: Check codespace is running
         id: check-codespace-running
-        continue-on-error: true
-        run: |
-          # Get the codespace url from the comment body
-          url_regex="https://[a-z0-9-]*.app.github.dev"
-          codespace_url=$(echo $ISSUE_COMMENT_BODY | grep -oP "$url_regex" | head -n 1)
+  continue-on-error: true
+  run: |
+    url_regex="https://[a-z0-9-]*.app.github.dev"
+    codespace_url=$(echo "$ISSUE_COMMENT_BODY" | grep -oP "$url_regex" | head -n 1)
 
-          # Ping the web service for a status code
-          echo "Checking codespace is running at: $codespace_url"
-          resp_code=$(curl -s -o /dev/null -w "%{http_code}" $codespace_url)
+    if [ -z "$codespace_url" ]; then
+      echo "❌ No Codespace URL found in comment."
+      exit 1
+    fi
 
-          # If the codespace is not running, comment on the issue and exit
-          if [ "$resp_code" -eq 200 ]; then
-            echo "Codespace confirmed running"
-          else
-            echo "Codespace is not running. Response Code: $resp_code"
-            exit 1
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
+    echo "Checking codespace is running at: $codespace_url"
+    resp_code=$(curl -s -o /dev/null -w "%{http_code}" $codespace_url)
+
+    if [ "$resp_code" -eq 200 ]; then
+      echo "✅ Codespace confirmed running"
+    else
+      echo "❌ Codespace is not running. Response Code: $resp_code"
+      exit 1
+    fi
+  env:
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
 
       # END: Check practical exercise
 
