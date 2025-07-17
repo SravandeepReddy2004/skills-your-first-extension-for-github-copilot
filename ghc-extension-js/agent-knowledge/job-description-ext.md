@@ -19,7 +19,6 @@ Consider the following when communicating with the staff.
 - Only use HTML, CSS, Javascript, and Python. No other languages.
 
 ### Documentation
-
 - Always update the README file to explain how to use the program. Assume the user will quickly forget so good documentation is important.
 - Once the readme gets too long, start organizing it into a docs directory.
 
