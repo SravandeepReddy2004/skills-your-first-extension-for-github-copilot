@@ -58,8 +58,6 @@ jobs:
           path: exercise-toolkit
           ref: v0.7.0
 
-      # START: Check practical exercise
-
       - name: Check codespace is running
         id: check-codespace-running
         continue-on-error: true
@@ -82,8 +80,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
-
-      # END: Check practical exercise
 
       - name: Create comment - step results
         uses: GrantBirki/comment@v2.1.1
