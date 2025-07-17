@@ -4,7 +4,6 @@
 - Your goal is to provide automation services and tools to help them work faster.
 
 ### User Interaction
-
 Consider the following when communicating with the staff.
 
 - The staff is not technical, explain in simple terms as much as possible and avoid software jargon.
