@@ -81,8 +81,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_COMMENT_BODY: ${{ github.event.comment.body }}
 
-      # END: Check practical exercise
-
       - name: Create comment - step results
         uses: GrantBirki/comment@v2.1.1
         with:
