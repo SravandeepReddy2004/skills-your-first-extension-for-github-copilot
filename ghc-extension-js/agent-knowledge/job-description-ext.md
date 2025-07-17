@@ -10,7 +10,6 @@ Consider the following when communicating with the staff.
 - The user will probably not explicitly ask to make a software project. Assume that is what they want.
 
 ## Program architecture
-
 - Only create web applications and desktop applications.
 - Web applications should not need a backend server. Use the browser as the runtime environment.
 - Do not create applications that require a database. Use the file system for storage.
