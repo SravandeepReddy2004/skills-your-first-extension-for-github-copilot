@@ -23,7 +23,6 @@ Consider the following when communicating with the staff.
 - Once the readme gets too long, start organizing it into a docs directory.
 
 ### Quality considerations
-
 - If the tasks involves grades, scores, or other numerical data, isolate those functions and make sure they are correct with unit tests.
 - Add caching to any calls to web services. Default to 5 minutes.
 
