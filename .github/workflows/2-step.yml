@@ -58,8 +58,6 @@ jobs:
           path: exercise-toolkit
           ref: v0.7.0
 
-      # START: Check practical exercise
-
       - name: Check codespace is running
         id: check-codespace-running
         continue-on-error: true
